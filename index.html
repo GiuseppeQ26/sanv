@@ -13,20 +13,44 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(180deg, #f8e8ef, #e8c7d4);
+  background: linear-gradient(180deg, #f9e7ee, #e6bfd0);
   display: flex;
   justify-content: center;
   align-items: center;
   color: #5a2d42;
 }
 
+/* Decoraciones románticas sutiles */
+body::before,
+body::after {
+  content: "💗 ✨ 💕";
+  position: fixed;
+  font-size: 26px;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+body::before {
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body::after {
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .wrapper {
   width: 100%;
   padding: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .card {
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.94);
   border-radius: 28px;
   padding: 32px 24px;
   max-width: 520px;
@@ -63,7 +87,7 @@ button {
   border-radius: 40px;
   border: none;
   cursor: pointer;
-  background: #c86b85;
+  background: #c66b8c;
   color: white;
   transition: 0.3s;
 }
@@ -81,7 +105,7 @@ button:hover {
 }
 
 #no {
-  background: #f3dbe3;
+  background: #f2d6e0;
   color: #8a3f5a;
 }
 
@@ -93,22 +117,22 @@ button:hover {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle, rgba(255,182,193,0.4) 2px, transparent 3px),
-    radial-gradient(circle, rgba(255,105,180,0.4) 2px, transparent 3px),
-    linear-gradient(180deg, #f6c1d1, #e8a1b8);
+    radial-gradient(circle, rgba(255,182,193,0.5) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,105,180,0.5) 2px, transparent 3px),
+    linear-gradient(180deg, #f6b8cf, #e89bb8);
   background-size: 120px 120px, 180px 180px, cover;
   animation: sparkle 6s linear infinite;
   z-index: -1;
 }
 
 @keyframes sparkle {
-  from { background-position: 0 0, 50px 50px, center; }
-  to { background-position: 200px 400px, 400px 200px, center; }
+  from { background-position: 0 0, 60px 60px, center; }
+  to { background-position: 300px 500px, 500px 300px, center; }
 }
 
 .bg-final {
-  font-size: 120px;
-  color: rgba(200,80,120,0.25);
+  font-size: 130px;
+  color: rgba(190,70,110,0.28);
   text-align: center;
   margin: 10px 0;
 }
@@ -125,11 +149,13 @@ button:hover {
 <div class="fireworks" id="fireworks" style="display:none;"></div>
 
 <!-- Música -->
-<audio id="musicSoft" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
+<audio id="musicStart" loop>
+  <!-- romántica suave inicial -->
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
 </audio>
 
 <audio id="musicFinal" loop>
+  <!-- romántica moderna -->
   <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
 </audio>
 
@@ -208,7 +234,7 @@ const texts = [
 function nextScreen(n, playMusic=false) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById("screen"+n).classList.add('active');
-  if (playMusic) document.getElementById("musicSoft").play();
+  if (playMusic) document.getElementById("musicStart").play();
 }
 
 function nope() {
@@ -225,7 +251,7 @@ function nope() {
 }
 
 function accept() {
-  document.getElementById("musicSoft").pause();
+  document.getElementById("musicStart").pause();
   document.getElementById("musicFinal").play();
   document.getElementById("fireworks").style.display = "block";
   nextScreen(4);
