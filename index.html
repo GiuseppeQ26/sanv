@@ -2,139 +2,186 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para la chica que más brilla 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Claudia 💖</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   height: 100vh;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background: linear-gradient(135deg, #ff5f8a, #ff9a9e);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  color: white;
 }
 
-/* Fondo iniciales */
-body::before {
-  content: "G ❤️ C";
+/* Fondo final */
+.bg-final {
   position: absolute;
-  font-size: 120px;
-  color: rgba(255,255,255,0.15);
-  transform: rotate(-20deg);
+  font-size: 140px;
+  color: rgba(255,255,255,0.12);
   z-index: 0;
+  text-align: center;
 }
 
+/* Card */
 .card {
   position: relative;
-  background: rgba(255,255,255,0.2);
-  padding: 40px 30px;
-  border-radius: 25px;
-  text-align: center;
-  max-width: 420px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
   z-index: 1;
-  animation: fadeIn 1.5s ease;
+  background: rgba(255,255,255,0.18);
+  padding: 40px 25px;
+  border-radius: 30px;
+  width: 90%;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: fadeIn 1.2s ease;
 }
 
 h1 {
-  font-size: 30px;
-  margin-bottom: 15px;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 p {
-  font-size: 22px;
-  margin-bottom: 30px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  font-size: 24px;
+  line-height: 1.4;
 }
 
 button {
-  font-size: 18px;
-  padding: 12px 28px;
-  border-radius: 30px;
+  font-size: 22px;
+  padding: 14px 30px;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
   transition: 0.3s;
 }
 
 #yes {
-  background: #ff2f68;
+  background: #ff1f63;
   color: white;
-}
-
-#yes:hover {
-  transform: scale(1.1);
 }
 
 #no {
   background: white;
-  color: #ff2f68;
-  position: relative;
+  color: #ff1f63;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {opacity:0; transform:translateY(30px);}
+  to {opacity:1; transform:translateY(0);}
 }
 
-/* Segunda pantalla */
-#screen2 {
+/* Ocultar pantallas */
+.screen {
   display: none;
-  flex-direction: column;
 }
 
-.promise {
-  font-size: 24px;
-  line-height: 1.5;
+.active {
+  display: block;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card" id="screen1">
-  <h1>Para la chica que más brilla en mis ojos ✨</h1>
+<!-- PANTALLA 1 -->
+<div class="card screen active" id="screen1">
+  <h1>Claudia ✨</h1>
   <p>
-    Tenía que preguntarte esto<br>
-    de una forma especial…
+    Tengo que hacerte una pregunta…<br><br>
+    pero primero déjame decirte algo.
   </p>
+  <br>
+  <button onclick="nextScreen(2)">Continuar 💫</button>
+</div>
 
-  <p><strong>¿Quieres ser mi San Valentín este 14 de febrero? 💘</strong></p>
+<!-- PANTALLA 2 -->
+<div class="card screen" id="screen2">
+  <p>
+    Para mí, tú eres<br>
+    <strong>la chica que más brilla en mis ojos</strong> ✨<br><br>
+    Y no podía dejar pasar este momento<br>
+    sin preguntarte algo especial…
+  </p>
+  <br>
+  <button onclick="nextScreen(3)">Siguiente 💖</button>
+</div>
+
+<!-- PANTALLA 3 -->
+<div class="card screen" id="screen3">
+  <p>
+    ¿Quieres ser mi<br>
+    <strong>San Valentín</strong><br>
+    este 14 de febrero? 💘
+  </p>
 
   <div class="buttons">
     <button id="yes" onclick="accept()">Sí 💖</button>
-    <button id="no" onmouseover="moveNo()">No 😅</button>
+    <button id="no" onclick="nope()">No 🙈</button>
   </div>
 </div>
 
-<div class="card" id="screen2">
-  <h1>Entonces es un trato 💕</h1>
-  <p class="promise">
-    Prometo risas,<br>
-    buenos momentos,<br>
-    miradas cómplices,<br>
-    y hacer que este 14<br>
-    valga la pena contigo ✨
+<!-- PANTALLA FINAL -->
+<div class="card screen" id="screen4">
+  <div class="bg-final">G ❤️ C</div>
+  <h1>Gracias, Claudia 💕</h1>
+  <p style="font-size:22px;">
+    Gracias por llenar mis días de alegrías.<br><br>
+    No hay nadie más en este mundo<br>
+    con quien quisiera pasar este día especial.<br><br>
+    Permíteme acompañarte a brillar<br>
+    este San Valentín ✨
   </p>
 </div>
 
+<!-- Música -->
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
 <script>
-function moveNo() {
-  const btn = document.getElementById("no");
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 200 - 100;
-  btn.style.transform = `translate(${x}px, ${y}px)`;
+let noCount = 0;
+const messages = [
+  "¿Segura? 😅",
+  "Piénsalo bien 🙃",
+  "Vamos… di que sí 😏",
+  "Ya sabes la respuesta 💘",
+  "Ok, el NO ya no es opción 😄"
+];
+
+function nextScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById("screen" + n).classList.add('active');
+}
+
+function nope() {
+  noCount++;
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+
+  if (noCount < messages.length) {
+    noBtn.innerText = messages[noCount - 1];
+    yesBtn.style.transform = `scale(${1 + noCount * 0.2})`;
+  } else {
+    noBtn.style.display = "none";
+    yesBtn.style.transform = "scale(2)";
+  }
 }
 
 function accept() {
-  document.getElementById("screen1").style.display = "none";
-  document.getElementById("screen2").style.display = "flex";
+  nextScreen(4);
+  document.getElementById("music").play();
 }
 </script>
 
