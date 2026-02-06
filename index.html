@@ -3,151 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para mi San Valentín 💖</title>
+<title>Para mi San Valentín ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  height: 100vh;
-  background: linear-gradient(180deg, #f4b6c2, #fde2e4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  height:100vh;
+  background:linear-gradient(180deg,#f7b2c4,#fde2e8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
-/* Tarjeta */
-.card {
-  width: 92%;
-  max-width: 420px;
-  background: rgba(255,255,255,0.35);
-  border-radius: 28px;
-  padding: 26px 22px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-  position: relative;
-  z-index: 3;
-  animation: fade 1s ease;
+.card{
+  width:92%;
+  max-width:420px;
+  background:rgba(255,255,255,0.35);
+  border-radius:26px;
+  padding:26px 22px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
+  z-index:2;
+  animation:fade 1s ease;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
+.hidden{display:none;}
+
+h1{
+  font-size:30px;
+  margin-bottom:12px;
 }
 
-p {
-  font-size: 18px;
-  line-height: 1.5;
+p{
+  font-size:18px;
+  line-height:1.55;
 }
 
-button {
-  margin-top: 20px;
-  padding: 14px 28px;
-  font-size: 18px;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
+button{
+  margin-top:20px;
+  padding:14px 28px;
+  font-size:18px;
+  border-radius:40px;
+  border:none;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-#yes {
-  background: #ff4f8b;
-  color: white;
+#yes{
+  background:#ff4f8b;
+  color:white;
 }
 
-#no {
-  background: white;
-  color: #ff4f8b;
-  position: relative;
+#no{
+  background:white;
+  color:#ff4f8b;
+  position:relative;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
 }
 
-.hidden { display: none; }
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
-/* ❤️ Corazones flotando */
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 20px;
-  animation: float 6s linear infinite;
-  opacity: 0.6;
-  z-index: 1;
+/* Corazones */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:float 6s linear infinite;
+  opacity:.6;
+  z-index:1;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-110vh); }
+@keyframes float{
+  to{transform:translateY(-110vh);}
 }
 
-/* 🎆 Fuegos artificiales */
-.fireworks {
-  position: fixed;
-  inset: 0;
-  display: none;
-  z-index: 2;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,180,200,0.9) 0%, transparent 40%),
-    radial-gradient(circle at 80% 40%, rgba(255,120,170,0.9) 0%, transparent 45%),
-    radial-gradient(circle at 50% 80%, rgba(255,200,220,0.9) 0%, transparent 50%);
-  animation: fireworks 5s ease-in-out infinite;
+/* Fuegos artificiales */
+.firework{
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#fff;
+  animation:explode 1.5s ease-out forwards;
+  z-index:1;
 }
 
-@keyframes fireworks {
-  0% { opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { opacity: 0.4; }
+@keyframes explode{
+  to{
+    transform:translate(var(--x),var(--y));
+    opacity:0;
+  }
 }
 
-/* G ❤️ C */
-.initials {
-  font-family: 'Playfair Display', serif;
-  font-size: 90px;
-  color: rgba(255,255,255,0.6);
-  margin-top: 20px;
-  animation: zoom 2s ease infinite alternate;
+/* Iniciales */
+.initials{
+  font-family:'Dancing Script',cursive;
+  font-size:96px;
+  color:rgba(255,255,255,0.75);
+  margin-top:20px;
+  animation:pulse 2s infinite;
 }
 
-@keyframes zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
-}
-
-/* Texto final animado */
-.final-text {
-  animation: fadeText 2s ease;
-}
-
-@keyframes fadeText {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.1);}
 }
 </style>
 </head>
 
 <body>
 
-<audio id="musicStart" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/02/audio_07a4a6db9a.mp3">
+<audio id="musicRomantic" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9e8c8e3b2a.mp3">
 </audio>
 
 <audio id="musicFinal" loop>
   <source src="https://cdn.pixabay.com/audio/2023/04/06/audio_6f47c2c2d8.mp3">
 </audio>
-
-<div class="fireworks" id="fireworks"></div>
 
 <!-- Pantalla 1 -->
 <div class="card" id="s1">
@@ -156,26 +140,23 @@ button {
     Tengo que preguntarte algo…<br>
     a <strong>la chica que más brilla en mis ojos</strong> 💖
   </p>
-  <button onclick="start()">Continuar 💫</button>
+  <button onclick="go(2)">Continuar 💫</button>
 </div>
 
 <!-- Pantalla 2 -->
 <div class="card hidden" id="s2">
-  <p>
-    ¿Quieres ser mi San Valentín este 14 de febrero? 💘
-  </p>
+  <p><strong>¿Quieres ser mi San Valentín este 14 de febrero? 💘</strong></p>
   <div class="buttons">
     <button id="yes" onclick="accept()">Sí 💖</button>
-    <button id="no" onmouseover="noMove()">No 😅</button>
+    <button id="no" onmouseover="moveNo()">No 😅</button>
   </div>
 </div>
 
 <!-- Pantalla final -->
-<div class="card hidden final-text" id="s3">
+<div class="card hidden" id="s3">
   <h1>Para mi San Valentín ❤️</h1>
   <p>
-    Prometo risas y buenos momentos,<br>
-    miradas cómplices y sonrisas sinceras ✨
+    Prometo risas y buenos momentos ✨
   </p>
   <p>
     Gracias bonita por llenar mis días de alegría,<br>
@@ -186,48 +167,61 @@ button {
 </div>
 
 <script>
-let noCount = 0;
-let yesSize = 1;
+let noCount=0;
+let yesScale=1;
+const noTexts=["¿Segura? 😅","Piénsalo bien 😏","No es opción 😌","Ya sabes que sí 💖","Ok basta 😆"];
 
-function start() {
-  document.getElementById("musicStart").play();
-  show(2);
-  spawnHearts();
+function go(n){
+  document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
+  document.getElementById('s'+n).classList.remove('hidden');
+  if(n===2){
+    document.getElementById("musicRomantic").play();
+    hearts();
+  }
 }
 
-function show(n) {
-  document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
-  document.getElementById('s' + n).classList.remove('hidden');
-}
-
-function noMove() {
+function moveNo(){
   noCount++;
-  yesSize += 0.15;
-  document.getElementById("yes").style.transform = `scale(${yesSize})`;
+  yesScale+=0.15;
+  document.getElementById("yes").style.transform=`scale(${yesScale})`;
 
-  const btn = document.getElementById("no");
-  btn.style.transform = `translate(${Math.random()*100 - 50}px, ${Math.random()*100 - 50}px)`;
-
-  if (noCount > 6) btn.innerText = "Ya no 😅";
+  const no=document.getElementById("no");
+  no.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*120-60}px)`;
+  if(noTexts[noCount-1]) no.innerText=noTexts[noCount-1];
 }
 
-function accept() {
-  if (navigator.vibrate) navigator.vibrate([120, 80, 120]);
-  document.getElementById("musicStart").pause();
+function accept(){
+  if(navigator.vibrate) navigator.vibrate([120,80,120]);
+  document.getElementById("musicRomantic").pause();
   document.getElementById("musicFinal").play();
-  document.getElementById("fireworks").style.display = "block";
-  show(3);
+  fireworks();
+  go(3);
 }
 
-function spawnHearts() {
-  setInterval(() => {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerText = "💖";
-    h.style.left = Math.random() * 100 + "vw";
+function hearts(){
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💖";
+    h.style.left=Math.random()*100+"vw";
     document.body.appendChild(h);
-    setTimeout(() => h.remove(), 6000);
-  }, 800);
+    setTimeout(()=>h.remove(),6000);
+  },900);
+}
+
+function fireworks(){
+  setInterval(()=>{
+    for(let i=0;i<8;i++){
+      const f=document.createElement("div");
+      f.className="firework";
+      f.style.left=Math.random()*100+"vw";
+      f.style.top=Math.random()*60+"vh";
+      f.style.setProperty("--x",(Math.random()*200-100)+"px");
+      f.style.setProperty("--y",(Math.random()*200-100)+"px");
+      document.body.appendChild(f);
+      setTimeout(()=>f.remove(),1500);
+    }
+  },1200);
 }
 </script>
 
