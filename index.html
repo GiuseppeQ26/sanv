@@ -84,4 +84,121 @@ button:hover {
   font-size: 160px;
   color: rgba(209,107,165,0.15);
   z-index: 0;
-  text
+  text-align: center;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(25px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música -->
+<audio id="musicSoft" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
+</audio>
+
+<audio id="musicFinal" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+</audio>
+
+<!-- PANTALLA 1 -->
+<div class="card screen active" id="screen1">
+  <h1>Claudia 💕</h1>
+  <img src="https://i.imgur.com/7MZC4xR.png">
+  <p>
+    Tengo algo que preguntarte…<br>
+    pero antes quiero que sepas algo 🥰
+  </p>
+  <button onclick="nextScreen(2, true)">Continuar ✨</button>
+</div>
+
+<!-- PANTALLA 2 -->
+<div class="card screen" id="screen2">
+  <img src="https://i.imgur.com/Qz9J4Gg.png">
+  <p>
+    Para mí, tú eres<br>
+    <strong>la chica que más brilla en mis ojos</strong> ✨💖<br><br>
+    Tu forma de ser,<br>
+    tu sonrisa y tu luz<br>
+    hacen mis días más lindos 🌷
+  </p>
+  <button onclick="nextScreen(3)">Siguiente 💗</button>
+</div>
+
+<!-- PANTALLA 3 -->
+<div class="card screen" id="screen3">
+  <img src="https://i.imgur.com/1YcYH3m.png">
+  <p>
+    Y ahora sí… 💘<br><br>
+    ¿Quieres ser mi<br>
+    <strong>San Valentín</strong><br>
+    este 14 de febrero? 🥰
+  </p>
+
+  <div class="buttons">
+    <button id="yes" onclick="accept()">Sí 💖</button>
+    <button id="no" onclick="nope()">No 🙈</button>
+  </div>
+</div>
+
+<!-- PANTALLA FINAL -->
+<div class="card screen" id="screen4">
+  <div class="bg-final">G 💕 C</div>
+  <img src="https://i.imgur.com/8yZqT9T.png">
+  <p>
+    Prometo risas 😊,<br>
+    buenos momentos 💫,<br>
+    miradas cómplices 💕<br>
+    y recuerdos que valgan la pena.<br><br>
+    Gracias por llenar mis días de alegrías.<br>
+    No hay nadie más en este mundo<br>
+    con quien quisiera pasar este día especial 💖<br><br>
+    Permíteme acompañarte a brillar<br>
+    este San Valentín ✨🌹
+  </p>
+</div>
+
+<script>
+let noCount = 0;
+const texts = [
+  "¿Segura? 🥺",
+  "Piénsalo otra vez 💕",
+  "Vamos… di que sí 😘",
+  "Ya sabes la respuesta 💖",
+  "El NO se cansó 😅"
+];
+
+function nextScreen(n, playMusic=false) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById("screen"+n).classList.add('active');
+  if (playMusic) document.getElementById("musicSoft").play();
+}
+
+function nope() {
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  if (noCount < texts.length) {
+    noBtn.innerText = texts[noCount];
+    yesBtn.style.transform = `scale(${1 + noCount * 0.25})`;
+    noCount++;
+  } else {
+    noBtn.style.display = "none";
+    yesBtn.style.transform = "scale(2)";
+  }
+}
+
+function accept() {
+  document.getElementById("musicSoft").pause();
+  document.getElementById("musicFinal").play();
+  nextScreen(4);
+}
+</script>
+
+</body>
+</html>
+
