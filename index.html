@@ -86,13 +86,11 @@ button:hover { transform: scale(1.05); }
 .screen { display: none; }
 .active { display: block; }
 
-/* Scroll solo en pantalla final */
-#screen4 {
+#screen5 {
   max-height: 85vh;
   overflow-y: auto;
 }
 
-/* Fireworks */
 .fireworks {
   position: fixed;
   inset: 0;
@@ -110,7 +108,6 @@ button:hover { transform: scale(1.05); }
   to { background-position: 300px 600px, 600px 300px, center; }
 }
 
-/* Corazones flotando */
 .heart {
   position: fixed;
   bottom: -10px;
@@ -124,7 +121,6 @@ button:hover { transform: scale(1.05); }
   to { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* Texto final animado */
 .final-text {
   animation: pulse 2.5s ease-in-out infinite;
 }
@@ -135,7 +131,6 @@ button:hover { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
-/* G y C */
 .initials {
   font-family: 'Dancing Script', cursive;
   font-size: 90px;
@@ -187,7 +182,19 @@ button:hover { transform: scale(1.05); }
   <button onclick="nextScreen(3)">Siguiente 💗</button>
 </div>
 
+<!-- NUEVA PANTALLA -->
 <div class="card screen" id="screen3">
+  <div class="decor">💞✨💞</div>
+  <p>
+    Me sigo sorprendiendo de la intensidad<br>
+    con la que ha ido avanzando esto…<br><br>
+    de cómo te extraño<br>
+    y pienso en ti todos los días 💕
+  </p>
+  <button onclick="nextScreen(4)">Continuar 💖</button>
+</div>
+
+<div class="card screen" id="screen4">
   <div class="decor">💘✨💘</div>
   <p>
     ¿Quieres ser mi<br>
@@ -200,7 +207,7 @@ button:hover { transform: scale(1.05); }
   </div>
 </div>
 
-<div class="card screen" id="screen4">
+<div class="card screen" id="screen5">
   <p class="final-text">
     <strong>Para mi San Valentín ❤️</strong><br><br>
 
@@ -256,7 +263,7 @@ function accept() {
   document.getElementById("musicSoft").pause();
   document.getElementById("musicFinal").play();
   document.getElementById("fireworks").style.display = "block";
-  nextScreen(4);
+  nextScreen(5);
 
   for (let i = 0; i < 18; i++) {
     let heart = document.createElement("div");
