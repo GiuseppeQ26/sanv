@@ -3,27 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Claudia 💖</title>
+<title>Para mi San Valentín 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   height: 100vh;
-  background: linear-gradient(180deg, #f7c1d9, #fbe3ec);
+  background: linear-gradient(180deg, #f4b6c2, #fde2e4);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
-/* Contenedor */
+/* Tarjeta */
 .card {
   width: 92%;
   max-width: 420px;
@@ -33,14 +29,13 @@ body {
   text-align: center;
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
   position: relative;
-  z-index: 2;
+  z-index: 3;
   animation: fade 1s ease;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 30px;
-  margin-bottom: 12px;
 }
 
 p {
@@ -55,7 +50,7 @@ button {
   border-radius: 40px;
   border: none;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
 #yes {
@@ -73,62 +68,83 @@ button {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
 
 @keyframes fade {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Fuegos artificiales */
+/* ❤️ Corazones flotando */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-110vh); }
+}
+
+/* 🎆 Fuegos artificiales */
 .fireworks {
   position: fixed;
   inset: 0;
-  z-index: 1;
-  pointer-events: none;
   display: none;
+  z-index: 2;
   background:
-    radial-gradient(circle at 20% 30%, rgba(255,180,200,0.8) 0%, transparent 40%),
-    radial-gradient(circle at 80% 40%, rgba(255,120,170,0.7) 0%, transparent 45%),
-    radial-gradient(circle at 50% 80%, rgba(255,200,220,0.8) 0%, transparent 50%),
-    linear-gradient(180deg, #f6b8cf, #e89bb8);
-  animation: fireworks 7s ease-in-out infinite;
+    radial-gradient(circle at 20% 30%, rgba(255,180,200,0.9) 0%, transparent 40%),
+    radial-gradient(circle at 80% 40%, rgba(255,120,170,0.9) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(255,200,220,0.9) 0%, transparent 50%);
+  animation: fireworks 5s ease-in-out infinite;
 }
 
 @keyframes fireworks {
-  0% { opacity: 0.5; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.5; }
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
 }
 
-/* Fondo iniciales */
+/* G ❤️ C */
 .initials {
-  position: absolute;
-  bottom: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 90px;
   font-family: 'Playfair Display', serif;
-  color: rgba(255,255,255,0.35);
-  z-index: 1;
+  font-size: 90px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 20px;
+  animation: zoom 2s ease infinite alternate;
+}
+
+@keyframes zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* Texto final animado */
+.final-text {
+  animation: fadeText 2s ease;
+}
+
+@keyframes fadeText {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Música -->
-<audio id="musicStart" autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/02/audio_07a4a6db9a.mp3" type="audio/mpeg">
+<audio id="musicStart" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/02/audio_07a4a6db9a.mp3">
 </audio>
 
 <audio id="musicFinal" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/11/21/audio_71f1f3c55b.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2023/04/06/audio_6f47c2c2d8.mp3">
 </audio>
 
 <div class="fireworks" id="fireworks"></div>
@@ -138,24 +154,16 @@ button {
   <h1>Claudia ✨</h1>
   <p>
     Tengo que preguntarte algo…<br>
-    pero no a cualquiera,<br>
-    sino a <strong>la chica que más brilla en mis ojos</strong> 💖
+    a <strong>la chica que más brilla en mis ojos</strong> 💖
   </p>
-  <button onclick="next(2)">Continuar 💫</button>
+  <button onclick="start()">Continuar 💫</button>
 </div>
 
 <!-- Pantalla 2 -->
 <div class="card hidden" id="s2">
   <p>
-    Cada día contigo se siente más bonito,<br>
-    y hay algo especial que quisiera preguntarte…
+    ¿Quieres ser mi San Valentín este 14 de febrero? 💘
   </p>
-  <button onclick="next(3)">Siguiente 💕</button>
-</div>
-
-<!-- Pantalla 3 -->
-<div class="card hidden" id="s3">
-  <h1>¿Quieres ser mi San Valentín? 💘</h1>
   <div class="buttons">
     <button id="yes" onclick="accept()">Sí 💖</button>
     <button id="no" onmouseover="noMove()">No 😅</button>
@@ -163,27 +171,31 @@ button {
 </div>
 
 <!-- Pantalla final -->
-<div class="card hidden" id="s4">
-  <h1>💖</h1>
+<div class="card hidden final-text" id="s3">
+  <h1>Para mi San Valentín ❤️</h1>
   <p>
     Prometo risas y buenos momentos,<br>
-    complicidad, sonrisas sinceras<br>
-    y hacer que este día sea especial contigo ✨
+    miradas cómplices y sonrisas sinceras ✨
   </p>
   <p>
     Gracias bonita por llenar mis días de alegría,<br>
     no hay nadie más en este mundo con quien quisiera pasar este día especial.<br>
-    <strong>Permíteme acompañarte a brillar este 14</strong> 💫
+    <strong>Permíteme acompañarte a brillar este día</strong> 💫
   </p>
+  <div class="initials">G ❤️ C</div>
 </div>
-
-<div class="initials hidden" id="initials">G ❤️ C</div>
 
 <script>
 let noCount = 0;
 let yesSize = 1;
 
-function next(n) {
+function start() {
+  document.getElementById("musicStart").play();
+  show(2);
+  spawnHearts();
+}
+
+function show(n) {
   document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
   document.getElementById('s' + n).classList.remove('hidden');
 }
@@ -194,19 +206,28 @@ function noMove() {
   document.getElementById("yes").style.transform = `scale(${yesSize})`;
 
   const btn = document.getElementById("no");
-  btn.style.transform = `translate(${Math.random()*120 - 60}px, ${Math.random()*120 - 60}px)`;
+  btn.style.transform = `translate(${Math.random()*100 - 50}px, ${Math.random()*100 - 50}px)`;
 
-  if (noCount > 6) {
-    btn.innerText = "Ya no 😅";
-  }
+  if (noCount > 6) btn.innerText = "Ya no 😅";
 }
 
 function accept() {
+  if (navigator.vibrate) navigator.vibrate([120, 80, 120]);
   document.getElementById("musicStart").pause();
   document.getElementById("musicFinal").play();
   document.getElementById("fireworks").style.display = "block";
-  document.getElementById("initials").classList.remove("hidden");
-  next(4);
+  show(3);
+}
+
+function spawnHearts() {
+  setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "💖";
+    h.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+  }, 800);
 }
 </script>
 
