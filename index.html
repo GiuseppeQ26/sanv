@@ -3,191 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para mi San Valentín ❤️</title>
+<title>Para Claudia 💕</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  height:100vh;
-  background:linear-gradient(180deg,#f5b7c7,#fde4ea);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(180deg, #f8e8ef, #e8c7d4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5a2d42;
+  overflow: hidden;
 }
 
-.card{
-  width:92%;
-  max-width:420px;
-  background:rgba(255,255,255,0.35);
-  border-radius:28px;
-  padding:26px 22px;
-  text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,0.25);
-  z-index:2;
-  animation:fade 1s ease;
+.wrapper {
+  width: 100%;
+  padding: 20px;
 }
 
-.hidden{display:none;}
-
-h1{
-  font-size:30px;
-  margin-bottom:12px;
+.card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 28px;
+  padding: 32px 24px;
+  max-width: 520px;
+  margin: auto;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+  animation: fadeIn 0.8s ease;
+  position: relative;
+  z-index: 2;
 }
 
-p{
-  font-size:18px;
-  line-height:1.55;
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-button{
-  margin-top:20px;
-  padding:14px 28px;
-  font-size:18px;
-  border-radius:40px;
-  border:none;
-  cursor:pointer;
-  transition:0.3s;
+.final-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 12px;
+  animation: finalFade 1.5s ease;
 }
 
-#yes{
-  background:#ff4f8b;
-  color:white;
+p {
+  font-size: 22px;
+  line-height: 1.45;
+  text-align: center;
 }
 
-#no{
-  background:white;
-  color:#ff4f8b;
-  position:relative;
+.decor {
+  font-size: 22px;
+  opacity: 0.6;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.buttons{
-  display:flex;
-  justify-content:center;
-  gap:18px;
+button {
+  display: block;
+  margin: 25px auto 0;
+  font-size: 22px;
+  padding: 14px 36px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  background: #c86b85;
+  color: white;
+  transition: 0.3s;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
+button:hover {
+  transform: scale(1.05);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+#no {
+  background: #f3dbe3;
+  color: #8a3f5a;
+}
+
+.screen { display: none; }
+.active { display: block; }
+
+/* Fondo final */
+.fireworks {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(255,182,193,0.4) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,105,180,0.4) 2px, transparent 3px),
+    linear-gradient(180deg, #f6c1d1, #e8a1b8);
+  background-size: 120px 120px, 180px 180px, cover;
+  animation: sparkle 6s linear infinite;
+  z-index: 0;
+}
+
+@keyframes sparkle {
+  from { background-position: 0 0, 50px 50px, center; }
+  to { background-position: 200px 400px, 400px 200px, center; }
+}
+
+/* G C */
+.bg-final {
+  font-family: 'Dancing Script', cursive;
+  font-size: 120px;
+  color: rgba(200,80,120,0.35);
+  text-align: center;
+  margin: 10px 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 /* Corazones flotando */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:float 6s linear infinite;
-  opacity:.6;
-  z-index:1;
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  animation: float 6s linear infinite;
+  opacity: 0.6;
+  z-index: 1;
 }
 
-@keyframes float{
-  to{transform:translateY(-110vh);}
+@keyframes float {
+  to { transform: translateY(-110vh); }
 }
 
-/* Texto final animado */
-.final-text{
-  animation:finalFade 2s ease;
+/* Animación texto final */
+.final-text {
+  animation: finalFade 2s ease;
 }
 
-@keyframes finalFade{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
+@keyframes finalFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Iniciales */
-.initials{
-  font-family:'Dancing Script',cursive;
-  font-size:96px;
-  color:rgba(255,255,255,0.75);
-  margin-top:20px;
-  animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.1);}
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(25px);}
+  to {opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
+<div class="fireworks" id="fireworks" style="display:none;"></div>
+
 <!-- Música -->
-<audio id="musicStart" loop>
+<audio id="musicSoft" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9e8c8e3b2a.mp3">
 </audio>
 
 <audio id="musicFinal" loop>
-  <!-- MÁS ROMÁNTICA Y MODERNA -->
+  <!-- ROMÁNTICA MODERNA -->
   <source src="https://cdn.pixabay.com/audio/2023/05/30/audio_4a8f4d4b5d.mp3">
 </audio>
 
-<!-- Pantalla 1 -->
-<div class="card" id="s1">
-  <h1>Claudia ✨</h1>
+<div class="wrapper">
+
+<!-- PANTALLA 1 -->
+<div class="card screen active" id="screen1">
+  <div class="decor">✨💗✨</div>
+  <h1>Claudia</h1>
   <p>
-    Tengo que preguntarte algo…<br>
-    a <strong>la chica que más brilla en mis ojos</strong> 💖
+    Tengo algo que preguntarte…<br>
+    pero antes quiero decirte algo bonito 💕
   </p>
-  <button onclick="go(2)">Continuar 💫</button>
+  <button onclick="nextScreen(2, true)">Continuar ✨</button>
 </div>
 
-<!-- Pantalla 2 -->
-<div class="card hidden" id="s2">
-  <p><strong>¿Quieres ser mi San Valentín este 14 de febrero? 💘</strong></p>
+<!-- PANTALLA 2 -->
+<div class="card screen" id="screen2">
+  <div class="decor">🌷✨🌷</div>
+  <p>
+    Para mí, tú eres<br>
+    <strong>la chica que más brilla en mis ojos</strong> ✨💖<br><br>
+    Tu forma de ser,<br>
+    tu luz y tu sonrisa<br>
+    hacen mis días más lindos 🥰
+  </p>
+  <button onclick="nextScreen(3)">Siguiente 💗</button>
+</div>
+
+<!-- PANTALLA 3 -->
+<div class="card screen" id="screen3">
+  <div class="decor">💘✨💘</div>
+  <p>
+    Y ahora sí…<br><br>
+    ¿Quieres ser mi<br>
+    <strong>San Valentín</strong><br>
+    este 14 de febrero? 💕
+  </p>
+
   <div class="buttons">
     <button id="yes" onclick="accept()">Sí 💖</button>
-    <button id="no" onmouseover="moveNo()">No 😅</button>
+    <button id="no" onclick="nope()">No 🙈</button>
   </div>
 </div>
 
-<!-- Pantalla final -->
-<div class="card hidden final-text" id="s3">
-  <h1>Para mi San Valentín ❤️</h1>
+<!-- PANTALLA FINAL -->
+<div class="card screen final-text" id="screen4">
+  <div class="final-title">Para mi San Valentín ❤️</div>
+  <div class="bg-final">G ❤️ C</div>
   <p>
-    Prometo risas y buenos momentos ✨
+    Prometo risas 😊,<br>
+    buenos momentos 💫,<br>
+    miradas cómplices 💕<br>
+    y recuerdos que valgan la pena.<br><br>
+
+    <strong>Gracias bonita por llenar mis días de alegría.</strong><br>
+    No hay nadie más en este mundo<br>
+    con quien quisiera pasar este día especial 💖<br><br>
+
+    Permíteme acompañarte a brillar<br>
+    este San Valentín ✨🌹
   </p>
-  <p>
-    Gracias bonita por llenar mis días de alegría,<br>
-    no hay nadie más en este mundo con quien quisiera pasar este día especial.<br>
-    <strong>Permíteme acompañarte a brillar este día</strong> 💫
-  </p>
-  <div class="initials">G ❤️ C</div>
+</div>
+
 </div>
 
 <script>
-let noCount=0;
-let yesScale=1;
-const noTexts=["¿Segura? 😅","Piénsalo bien 😏","No es opción 😌","Ya sabes que sí 💖","Ok basta 😆"];
+let noCount = 0;
+const texts = [
+  "¿Segura? 🥺",
+  "Piénsalo bien 💕",
+  "Vamos… di que sí 😘",
+  "Ya sabes la respuesta 💖",
+  "El NO ya no cuenta 😅"
+];
 
-function go(n){
-  document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
-  document.getElementById('s'+n).classList.remove('hidden');
-  if(n===2){
-    document.getElementById("musicStart").play();
+function nextScreen(n, playMusic=false) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById("screen"+n).classList.add('active');
+  if (playMusic) {
+    document.getElementById("musicSoft").play();
     hearts();
   }
 }
 
-function moveNo(){
-  noCount++;
-  yesScale+=0.15;
-  document.getElementById("yes").style.transform=`scale(${yesScale})`;
-  const no=document.getElementById("no");
-  no.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*120-60}px)`;
-  if(noTexts[noCount-1]) no.innerText=noTexts[noCount-1];
+function nope() {
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  if (noCount < texts.length) {
+    noBtn.innerText = texts[noCount];
+    yesBtn.style.transform = `scale(${1 + noCount * 0.25})`;
+    noCount++;
+  } else {
+    noBtn.style.display = "none";
+    yesBtn.style.transform = "scale(2)";
+  }
 }
 
-function accept(){
-  if(navigator.vibrate) navigator.vibrate([120,80,120]);
-  document.getElementById("musicStart").pause();
+function accept() {
+  if (navigator.vibrate) navigator.vibrate([120,80,120]);
+  document.getElementById("musicSoft").pause();
   document.getElementById("musicFinal").play();
-  go(3);
+  document.getElementById("fireworks").style.display = "block";
+  nextScreen(4);
 }
 
 function hearts(){
