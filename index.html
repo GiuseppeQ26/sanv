@@ -12,7 +12,7 @@ body{
   margin:0;
   font-family:'Poppins',sans-serif;
   height:100vh;
-  background:linear-gradient(180deg,#f7b2c4,#fde2e8);
+  background:linear-gradient(180deg,#f5b7c7,#fde4ea);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -23,7 +23,7 @@ body{
   width:92%;
   max-width:420px;
   background:rgba(255,255,255,0.35);
-  border-radius:26px;
+  border-radius:28px;
   padding:26px 22px;
   text-align:center;
   box-shadow:0 15px 40px rgba(0,0,0,0.25);
@@ -75,7 +75,7 @@ button{
   to{opacity:1;transform:translateY(0);}
 }
 
-/* Corazones */
+/* Corazones flotando */
 .heart{
   position:fixed;
   bottom:-20px;
@@ -89,22 +89,14 @@ button{
   to{transform:translateY(-110vh);}
 }
 
-/* Fuegos artificiales */
-.firework{
-  position:fixed;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#fff;
-  animation:explode 1.5s ease-out forwards;
-  z-index:1;
+/* Texto final animado */
+.final-text{
+  animation:finalFade 2s ease;
 }
 
-@keyframes explode{
-  to{
-    transform:translate(var(--x),var(--y));
-    opacity:0;
-  }
+@keyframes finalFade{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 /* Iniciales */
@@ -125,12 +117,14 @@ button{
 
 <body>
 
-<audio id="musicRomantic" loop>
+<!-- Música -->
+<audio id="musicStart" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9e8c8e3b2a.mp3">
 </audio>
 
 <audio id="musicFinal" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/04/06/audio_6f47c2c2d8.mp3">
+  <!-- MÁS ROMÁNTICA Y MODERNA -->
+  <source src="https://cdn.pixabay.com/audio/2023/05/30/audio_4a8f4d4b5d.mp3">
 </audio>
 
 <!-- Pantalla 1 -->
@@ -153,7 +147,7 @@ button{
 </div>
 
 <!-- Pantalla final -->
-<div class="card hidden" id="s3">
+<div class="card hidden final-text" id="s3">
   <h1>Para mi San Valentín ❤️</h1>
   <p>
     Prometo risas y buenos momentos ✨
@@ -175,7 +169,7 @@ function go(n){
   document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
   document.getElementById('s'+n).classList.remove('hidden');
   if(n===2){
-    document.getElementById("musicRomantic").play();
+    document.getElementById("musicStart").play();
     hearts();
   }
 }
@@ -184,7 +178,6 @@ function moveNo(){
   noCount++;
   yesScale+=0.15;
   document.getElementById("yes").style.transform=`scale(${yesScale})`;
-
   const no=document.getElementById("no");
   no.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*120-60}px)`;
   if(noTexts[noCount-1]) no.innerText=noTexts[noCount-1];
@@ -192,9 +185,8 @@ function moveNo(){
 
 function accept(){
   if(navigator.vibrate) navigator.vibrate([120,80,120]);
-  document.getElementById("musicRomantic").pause();
+  document.getElementById("musicStart").pause();
   document.getElementById("musicFinal").play();
-  fireworks();
   go(3);
 }
 
@@ -207,21 +199,6 @@ function hearts(){
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),6000);
   },900);
-}
-
-function fireworks(){
-  setInterval(()=>{
-    for(let i=0;i<8;i++){
-      const f=document.createElement("div");
-      f.className="firework";
-      f.style.left=Math.random()*100+"vw";
-      f.style.top=Math.random()*60+"vh";
-      f.style.setProperty("--x",(Math.random()*200-100)+"px");
-      f.style.setProperty("--y",(Math.random()*200-100)+"px");
-      document.body.appendChild(f);
-      setTimeout(()=>f.remove(),1500);
-    }
-  },1200);
 }
 </script>
 
